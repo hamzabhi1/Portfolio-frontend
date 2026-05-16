@@ -1,0 +1,152 @@
+/* FOOTER MAIN */
+.footer {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* HEIGHT KAM */
+  padding: 35px 8% 15px;
+
+  color: #f8fafc;
+  margin-top: 60px;
+}
+
+/* FOOTER CONTENT */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* LEFT */
+.left-section {
+  flex: 1;
+  min-width: 260px;
+}
+
+.left-section h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
+.left-section p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+/* CENTER */
+.centre-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* SOCIAL ICONS */
+.centre-section a {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #f8fafc;
+  font-size: 1.2rem;
+
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* HOVER */
+.centre-section a:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  box-shadow: 0 8px 18px rgba(56, 189, 248, 0.3);
+}
+
+/* BOTTOM */
+.bottom-section {
+  margin-top: 28px;
+  padding-top: 16px;
+  text-align: center;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bottom-section p {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 6% 15px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .left-section p {
+    margin: auto;
+  }
+
+  .centre-section {
+    justify-content: center;
+  }
+
+  .left-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .centre-section a {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .bottom-section {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 25px 5% 14px;
+  }
+
+  .left-section h1 {
+    font-size: 1.4rem;
+  }
+
+  .left-section p {
+    font-size: 0.88rem;
+  }
+
+  .bottom-section p {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+}
