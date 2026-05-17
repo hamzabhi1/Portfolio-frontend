@@ -34,7 +34,7 @@ const Contact = () => {
       setLoading(true);
       setStatus("Sending message...");
 
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("https://portfolio-backend-wheat-rho.vercel.app/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

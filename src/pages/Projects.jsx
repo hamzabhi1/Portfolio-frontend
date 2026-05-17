@@ -14,7 +14,7 @@ const Projects = () => {
 
   // FETCH PROJECTS
   const fetchProjects = async () => {
-    const res = await fetch("http://localhost:5000/api/projects");
+    const res = await fetch("https://portfolio-backend-wheat-rho.vercel.app/api/projects");
     const data = await res.json();
     setProjects(data);
   };
@@ -36,7 +36,7 @@ const Projects = () => {
     formData.append("tech", form.tech);
     formData.append("image", form.image);
 
-    await fetch("http://localhost:5000/api/projects", {
+    await fetch("https://portfolio-backend-wheat-rho.vercel.app/api/projects", {
       method: "POST",
       body: formData
     });
@@ -53,7 +53,7 @@ const Projects = () => {
 
   // DELETE PROJECT
   const deleteProject = async (id) => {
-    await fetch(`http://localhost:5000/api/projects/${id}`, {
+    await fetch(`https://portfolio-backend-wheat-rho.vercel.app/api/projects/${id}`, {
       method: "DELETE"
     });
 
