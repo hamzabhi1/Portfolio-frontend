@@ -12,7 +12,6 @@ const Contact = () => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // HANDLE INPUT CHANGE
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -20,13 +19,11 @@ const Contact = () => {
     });
   };
 
-  // HANDLE SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // validation
     if (!form.name || !form.email || !form.message) {
-      setStatus("Please fill all fields ❌");
+      setStatus("❌ Please fill all fields");
       return;
     }
 
@@ -34,34 +31,41 @@ const Contact = () => {
       setLoading(true);
       setStatus("Sending message...");
 
-      const response = await fetch("https://portfolio-backend-wheat-rho.vercel.app/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const response = await fetch(
+        "https://portfolio-backend-wheat-rho.vercel.app/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
-      // SAFE JSON PARSE
-      const data = await response.json();
+      // ⚠️ SAFE CHECK (avoid crash if backend fails)
+      const text = await response.text();
+      let data;
+
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = { message: text };
+      }
 
       if (response.ok) {
-        setStatus("Message sent successfully ✅");
+        setStatus("✅ Message sent successfully");
 
-        // clear form
         setForm({
           name: "",
           email: "",
           message: "",
         });
       } else {
-        setStatus(data.message || "Something went wrong ❌");
+        setStatus(data.message || "❌ Something went wrong");
       }
-
     } catch (error) {
       console.log("CONTACT ERROR:", error);
-
-      setStatus("Server Error ❌");
+      setStatus("❌ Server not responding");
     } finally {
       setLoading(false);
     }
@@ -72,18 +76,12 @@ const Contact = () => {
       <Navbar />
 
       <div className="contact-container">
-
-        {/* HEADER */}
         <div className="contact-header">
           <h2>Contact Me</h2>
-          <p>
-            Have a project idea or collaboration? Send me a message.
-          </p>
+          <p>Have a project idea or collaboration? Send me a message.</p>
         </div>
 
-        {/* FORM */}
         <form className="contact-form" onSubmit={handleSubmit}>
-
           <input
             type="text"
             name="name"
@@ -111,9 +109,7 @@ const Contact = () => {
             {loading ? "Sending..." : "Send Message"}
           </button>
 
-          {/* STATUS */}
           {status && <p className="status">{status}</p>}
-
         </form>
       </div>
     </div>
