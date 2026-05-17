@@ -32,7 +32,7 @@ const Contact = () => {
       setStatus("Sending message...");
 
       const response = await fetch(
-        "https://portfolio-backend-wheat-rho.vercel.app/api/contact",
+        "https://portfolio-backend-rouge-one.vercel.app/api/contact",
         {
           method: "POST",
           headers: {
